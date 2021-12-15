@@ -8,11 +8,26 @@ const container = document.querySelector('.container');
 let activeSlideIndex = 0;
 sidebar.style.top = `-${(slidesCount - 1) * 100}vh`;
 
+const btnColor = document.getElementsByTagName('button');
+
+// btnColor[0].style.backgroundColor = 'red';
+
+console.log(btnColor);
 upBtn.addEventListener('click', () => {
 	changeSlide('up');
 });
 downBtn.addEventListener('click', () => {
 	changeSlide('down');
+});
+
+document.addEventListener('keydown', e => {
+	if (e.key === 'ArrowUp') {
+		changeSlide('up');
+		btnColor.classList.add('pressBtn');
+	} else if (e.key === 'ArrowDown') {
+		changeSlide('down');
+		btnColor.classList.add('pressBtn');
+	}
 });
 
 function changeSlide(dirction) {
